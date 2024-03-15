@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Button } from "react-native";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Track Your Goals!</Text>
+      <Text style={styles.textStyle}>Track Your Goals!</Text>
       {/* <StatusBar style="auto" /> */}
       <Button title="Add a Goal" />
     </View>
@@ -17,5 +17,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  textStyle: {
+    marginBottom: 20,
+    borderWidth: 2,
+    padding: 16,
   },
 });
