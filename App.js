@@ -5,10 +5,12 @@ import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 export default function App() {
   const [enteredGoalText, setEnteredGoalText] = useState("");
   function goalInput(enteredText) {
-    console.log(enteredText);
+    setEnteredGoalText(enteredText);
   }
 
-  function addGoal() {}
+  function addGoal() {
+    console.log(enteredGoalText);
+  }
 
   return (
     <View style={styles.appContainer}>
