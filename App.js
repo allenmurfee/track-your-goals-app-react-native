@@ -4,12 +4,14 @@ import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 
 export default function App() {
   const [enteredGoalText, setEnteredGoalText] = useState("");
+  const [courseGoals, setCourseGoals] = useState([]);
   function goalInput(enteredText) {
     setEnteredGoalText(enteredText);
   }
 
   function addGoal() {
-    console.log(enteredGoalText);
+    // the below is a callback function that receives the current state (here the parameter for the state is currentCourseGoals) and then creates a new array. This is better than updating the state directly with just setCourseGoals( [...courseGoals, enteredGoalText]) because it can lead to unexpected behavior
+    setCourseGoals((currentCourseGoals) => [...courseGoals, enteredGoalText]);
   }
 
   return (
@@ -26,7 +28,9 @@ export default function App() {
       </View>
       {/* List view for all goals */}
       <View style={styles.goalsContainer}>
-        <Text>List of Goals...</Text>
+        {courseGoals.map((goal, index) => (
+          <Text key={index}>{goal}</Text>
+        ))}
       </View>
     </View>
   );
