@@ -29,9 +29,11 @@ export default function App() {
       {/* List view for all goals */}
       <View style={styles.goalsContainer}>
         {courseGoals.map((goal, index) => (
-          <Text style={styles.individualGoal} key={index}>
-            {goal}
-          </Text>
+          // Apply individualGoal styling to View because applying to <Text> doesn't allow rounded corners borderRadius on IOS
+          <View style={styles.individualGoal} key={index}>
+            {/* Apply "color" CSS styling on the text because "color" on the parent won't cascade to the child. */}
+            <Text style={styles.goalText}>{goal}</Text>
+          </View>
         ))}
       </View>
     </View>
@@ -70,6 +72,8 @@ const styles = StyleSheet.create({
     backgroundColor: "turquoise",
     borderColor: "black",
     borderRadius: 6,
-    color: "black",
+  },
+  goalText: {
+    color: "white",
   },
 });
