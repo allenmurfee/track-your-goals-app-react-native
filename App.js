@@ -29,7 +29,9 @@ export default function App() {
       {/* List view for all goals */}
       <View style={styles.goalsContainer}>
         {courseGoals.map((goal, index) => (
-          <Text key={index}>{goal}</Text>
+          <Text style={styles.individualGoal} key={index}>
+            {goal}
+          </Text>
         ))}
       </View>
     </View>
@@ -60,5 +62,14 @@ const styles = StyleSheet.create({
   },
   goalsContainer: {
     flex: 4,
+  },
+  individualGoal: {
+    margin: 8,
+    padding: 8,
+    borderWidth: 2,
+    backgroundColor: "turquoise",
+    borderColor: "black",
+    borderRadius: 6,
+    color: "black",
   },
 });
