@@ -2,13 +2,14 @@
 import { useState } from "react";
 import {
   StyleSheet,
-  Text,
   View,
   Button,
   TextInput,
   ScrollView,
   FlatList,
 } from "react-native";
+
+import GoalItem from "./components/GoalItem";
 
 export default function App() {
   const [enteredGoalText, setEnteredGoalText] = useState("");
@@ -50,14 +51,11 @@ export default function App() {
         </ScrollView> */}
         {/* Replace ScrollView with FlatList for lazy loading. Have to map data differently.*/}
         <FlatList
+          // Flatlist automatically looks for "key" in the object - in this case, courseGoals
           data={courseGoals}
           // itemData is actually an object passed from FlatList with not only data from courseGoals but also meta data
           renderItem={(itemData) => {
-            return (
-              <View style={styles.individualGoal}>
-                <Text style={styles.goalText}>{itemData.item}</Text>
-              </View>
-            );
+            return <GoalItem />;
           }}
         />
       </View>
@@ -89,16 +87,5 @@ const styles = StyleSheet.create({
   },
   goalsContainer: {
     flex: 4,
-  },
-  individualGoal: {
-    margin: 8,
-    padding: 8,
-    borderWidth: 2,
-    backgroundColor: "turquoise",
-    borderColor: "black",
-    borderRadius: 6,
-  },
-  goalText: {
-    color: "white",
   },
 });
