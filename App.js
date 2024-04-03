@@ -1,6 +1,13 @@
 // import { StatusBar } from 'expo-status-bar';
 import { useState } from "react";
-import { StyleSheet, Text, View, Button, TextInput } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  ScrollView,
+} from "react-native";
 
 export default function App() {
   const [enteredGoalText, setEnteredGoalText] = useState("");
@@ -28,13 +35,15 @@ export default function App() {
       </View>
       {/* List view for all goals */}
       <View style={styles.goalsContainer}>
-        {courseGoals.map((goal, index) => (
-          // Apply individualGoal styling to View because applying to <Text> doesn't allow rounded corners borderRadius on IOS
-          <View style={styles.individualGoal} key={index}>
-            {/* Apply "color" CSS styling on the text because "color" on the parent won't cascade to the child. */}
-            <Text style={styles.goalText}>{goal}</Text>
-          </View>
-        ))}
+        <ScrollView>
+          {courseGoals.map((goal, index) => (
+            // Apply individualGoal styling to View because applying to <Text> doesn't allow rounded corners borderRadius on IOS
+            <View style={styles.individualGoal} key={index}>
+              {/* Apply "color" CSS styling on the text because "color" on the parent won't cascade to the child. */}
+              <Text style={styles.goalText}>{goal}</Text>
+            </View>
+          ))}
+        </ScrollView>
       </View>
     </View>
   );
