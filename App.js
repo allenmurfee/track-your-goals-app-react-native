@@ -55,7 +55,7 @@ export default function App() {
           data={courseGoals}
           // itemData is actually an object passed from FlatList with not only data from courseGoals but also meta data
           renderItem={(itemData) => {
-            return <GoalItem />;
+            return <GoalItem text={itemData.item.text} />;
           }}
         />
       </View>
